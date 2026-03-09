@@ -168,3 +168,28 @@ WHERE
     menu_price >= 5000 
     AND category_code = 10 
     AND menu_name LIKE '%갈치%';
+
+    -- 5) IN 연산자
+SELECT
+    *
+FROM
+    tbl_menu
+WHERE
+    category_code IN (4,5,6);
+
+SELECT
+    *
+FROM
+    tbl_menu
+WHERE
+    category_code NOT IN (4,5,6);
+
+-- 6) IS NULL : null 값 비교 연산자(단순 = 연산자로는 비교 불가)
+SELECT
+    *
+FROM
+    tbl_category
+WHERE
+    -- ref_category_code = NULL;
+    -- ref_category_code IS NULL;
+    ref_category_code IS NOT NULL;
