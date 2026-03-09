@@ -111,3 +111,60 @@ WHERE
     menu_price NOT BETWEEN 10000 AND 25000
 ORDER BY
     menu_price;
+
+-- 4) LIKE : 문자 검색
+SELECT
+    *
+FROM    
+    tbl_menu
+WHERE
+    menu_name LIKE '%마늘%';  --해당 키워드를 포함
+
+SELECT
+    *
+FROM    
+    tbl_menu
+WHERE
+    menu_name LIKE '%아메리카노';  --해당 키워드로 끝남
+
+SELECT
+    *
+FROM    
+    tbl_menu
+WHERE
+    menu_name LIKE '흑%';  --해당 키워드로 시작함
+
+
+SELECT
+    *
+FROM    
+    tbl_menu
+WHERE
+    menu_name LIKE '_마늘%';  -- '_' 는 자리 차지
+
+--'_' 나 '%'와 같은 기호를 실제로 검색하고 싶은 경우
+-- LIKE '%\_%' 또는 LIKE '%!_%' ESCAPE '!' 와 같은 방식으로 ESCAPE 한다. 
+
+-- NOT LIKE 
+SELECT
+    *
+FROM    
+    tbl_menu
+WHERE
+    menu_name NOT LIKE '%마늘%';  --해당 키워드를 포함하지 않음
+
+-- 퀴즈. 메뉴 가격이 5000원 이상이고 카테고리 코드가 10이며
+-- 메뉴 이름에 갈치가 들어있는 메뉴의 모든 컬럼 값 조회(컬럼 명시)
+
+SELECT 
+    menu_code, 
+    menu_name, 
+    menu_price, 
+    category_code, 
+    orderable_status
+FROM 
+    tbl_menu
+WHERE 
+    menu_price >= 5000 
+    AND category_code = 10 
+    AND menu_name LIKE '%갈치%';
